@@ -1,7 +1,6 @@
 "use client";
 
 import TextEditor from "@/components/TextEditor";
-import Toolbar from "@/components/TextEditor/Toolbar";
 import { FormField, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { Form } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
@@ -42,7 +41,7 @@ export default function Home() {
                   </FormLabel>
                   <FormControl>
                     <TextEditor
-                      content={field.value}
+                      value={field.value}
                       onChange={(value) => field.onChange(value)}
                     />
                   </FormControl>

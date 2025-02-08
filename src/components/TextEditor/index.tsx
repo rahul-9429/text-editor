@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback } from "react";
+
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import TextAlign from "@tiptap/extension-text-align";
@@ -13,6 +13,7 @@ import Toolbar from "./Toolbar";
 
 interface EditorProps {
   onChange?: (html: string) => void;
+  value: string;
 }
 
 const TextEditor: React.FC<EditorProps> = ({ onChange }) => {
@@ -21,8 +22,9 @@ const TextEditor: React.FC<EditorProps> = ({ onChange }) => {
       StarterKit.configure(),
       TextAlign.configure({ types: ["heading", "paragraph"] }),
       Heading.configure(),
-      Highlight.configure({ levels: [1, 2, 3] }),
+      Heading.configure({ levels: [1, 2, 3] }),
       Image.configure(),
+      Highlight.configure(),
       Link.configure(),
       BulletList.configure(),
       OrderedList.configure({
