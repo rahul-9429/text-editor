@@ -1,9 +1,74 @@
-import Image from "next/image";
+"use client";
+
+import TextEditor from "@/components/TextEditor";
+import Toolbar from "@/components/TextEditor/Toolbar";
+import { FormField, FormItem, FormLabel, FormControl } from "@/components/ui/form";
+import { Form } from "@/components/ui/form";
+import { useForm } from "react-hook-form";
+
+interface FormValues {
+  post: string;
+}
 
 export default function Home() {
+  const form = useForm<FormValues>({
+    mode: "onTouched",
+    defaultValues: {
+      post: "",
+    },
+  });
+
+  const onSubmit = (data: FormValues) => {
+    console.log(data);
+  };
+
+  const handleClick = () => {
+    alert("No Functionality");
+  };
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <h1>Text Editor: INIT</h1>       
+    <div className="h-screen">
+      <div className="w-[90%] m-auto">
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="post"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel htmlFor="post">
+                  <h1 className="text-4xl text-emerald-700/70 font-mono"> Text Editor</h1>
+
+                  </FormLabel>
+                  <FormControl>
+                    <TextEditor
+                      content={field.value}
+                      onChange={(value) => field.onChange(value)}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+            <span className="flex gap-1">
+            <button
+              type="button"
+              onClick={handleClick}
+              className="bg-emerald-600 text-white px-4 py-2 rounded-md hover:bg-emerald-700"
+            >
+            Html Code
+            </button>
+            <button
+              type="button"
+              onClick={handleClick}
+              className="bg-emerald-600 text-white px-4 py-2 rounded-md hover:bg-emerald-700"
+            >
+              Submit
+            </button>
+            </span>
+           
+          </form>
+        </Form>
+      </div>
     </div>
   );
 }
