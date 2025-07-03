@@ -49,7 +49,7 @@ const TextEditor: React.FC<EditorProps> = ({ onChange }) => {
   return (
     <div>
       <Toolbar editor={editor} />
-      {editor ? <EditorContent editor={editor} /> : <p>Loading editor...</p>}
+      {editor ? <EditorContent editor={editor} /> : <p>Sabr Rukh Meri Jaan... <br/> Load Horaha Hae... </p>}
     </div>
   );
 };
